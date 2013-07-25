@@ -40,31 +40,35 @@
     item1.title = @"Red";
     item1.defaultTitleColor = [UIColor redColor];
     item1.titleFont = [UIFont fontWithName:@"MarkerFelt-Wide" size:20];
+    item1.backgroundImageURL = @"http://urbantimes.co/wp-content/uploads/2010/12/chrisevans1-312x400.jpg";
     [items addObject:item1];
 
     ILSideScrollViewItem *item2 = [ILSideScrollViewItem item];
     item2.title = @"Green";
     item2.defaultTitleColor = [UIColor greenColor];
     item2.titleFont = [UIFont fontWithName:@"TimesNewRomanPS-BoldMT" size:20];
+    item2.backgroundImageURL = @"http://urbantimes.co/wp-content/uploads/2010/12/chrisevans1-312x400.jpg";
     [items addObject:item2];
 
     ILSideScrollViewItem *item3 = [ILSideScrollViewItem item];
     item3.title = @"Purple";
     item3.defaultTitleColor = [UIColor purpleColor];
     item3.titleFont = [UIFont fontWithName:@"Papyrus" size:20];
+    item3.backgroundImageURL = @"http://urbantimes.co/wp-content/uploads/2010/12/chrisevans1-312x400.jpg";
     [items addObject:item3];
 
     ILSideScrollViewItem *item4 = [ILSideScrollViewItem item];
     item4.title = @"Blue";
     item4.defaultTitleColor = [UIColor blueColor];
     item4.titleFont = [UIFont fontWithName:@"HelveticaNeue-UltraLight" size:20];
+    item4.backgroundImageURL = @"http://urbantimes.co/wp-content/uploads/2010/12/chrisevans1-312x400.jpg";
     [items addObject:item4];
     
     scroller1 = [[ILSideScrollView alloc] initWithFrame:
                                    CGRectMake(0,
                                               0,
                                               self.view.frame.size.width,
-                                              100)];
+                                              200)];
     [scroller1 populateSideScrollViewWithItems:items];
 
     [self.view addSubview:scroller1];

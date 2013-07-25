@@ -62,7 +62,7 @@
     [self removeAllItems];
 
     self.items = [items mutableCopy];
-    width = self.frame.size.height - (2 * kVerticalBuffer);
+    width = (self.frame.size.height * 0.666) - (2 * kVerticalBuffer);
 
     /* Raise an exception if items contains foreign-typed objects */
     if (![self arrayContainsItemObjects:items]) {
@@ -71,8 +71,12 @@
 
     for (int i = 0; i < items.count; i++) {
         ILSideScrollViewItem *item = items[i];
-
-        NPRImageView *imageCell = [[NPRImageView alloc] initWithFrame:CGRectInset(CGRectMake(0, 0, 200, self.frame.size.height), 10, 10)];
+        
+        CGFloat cellHeight = width * 1.5;
+        NPRImageView *imageCell = [[NPRImageView alloc] initWithFrame:CGRectMake(leftLength, kVerticalBuffer, width, cellHeight)];
+        [imageCell setAutoresizingMask:UIViewAutoresizingFlexibleHeight|UIViewAutoresizingFlexibleWidth];
+        [imageCell setBackgroundColor:[UIColor whiteColor]];
+        [imageCell setContentMode:UIViewContentModeScaleAspectFill];
         
         NSURL *imageLink = [NSURL URLWithString:item.backgroundImageURL];
 
