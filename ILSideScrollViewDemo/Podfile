@@ -1,0 +1,3 @@
+platform :ios, '6.0'
+
+pod 'NPRImageView', :podspec => 'https://raw.github.com/steve21124/NPRImageView/master/NPRImageView.podspec'

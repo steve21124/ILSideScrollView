@@ -1,0 +1,22 @@
+PODS:
+  - AFNetworking (1.3.1)
+  - libextobjc/EXTScope (0.2.5):
+    - libextobjc/RuntimeExtensions
+  - libextobjc/RuntimeExtensions (0.2.5)
+  - NPRImageView (0.0.1):
+    - AFNetworking
+    - libextobjc/EXTScope
+
+DEPENDENCIES:
+  - NPRImageView (from `https://raw.github.com/steve21124/NPRImageView/master/NPRImageView.podspec`)
+
+EXTERNAL SOURCES:
+  NPRImageView:
+    :podspec: https://raw.github.com/steve21124/NPRImageView/master/NPRImageView.podspec
+
+SPEC CHECKSUMS:
+  AFNetworking: 9ec8aafb9269236a7630bd8d9838ce2ba30fa2a0
+  libextobjc: 2cbc74caf8bdc74a86fdf24673f773c83424ea98
+  NPRImageView: 5f391d4ac68b42cc6bb6cf1d52c4b644527a760d
+
+COCOAPODS: 0.20.2

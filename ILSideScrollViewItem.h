@@ -12,12 +12,10 @@
 
 @property (strong, nonatomic) NSString *title;
 
-@property (strong, nonatomic) UIImage *defaultBackgroundImage;
-@property (strong, nonatomic) UIImage *selectedBackgroundImage;
-@property (strong, nonatomic) UIColor *backgroundColor;
+@property (strong, nonatomic) NSString *backgroundImageURL;
+@property (strong, nonatomic) NSString *placeHolderImageURL;
 
 @property (strong, nonatomic) UIColor *defaultTitleColor;
-@property (strong, nonatomic) UIColor *selectedTitleColor;
 @property (strong, nonatomic) UIFont *titleFont;
 
 @property (nonatomic, readonly) id target;

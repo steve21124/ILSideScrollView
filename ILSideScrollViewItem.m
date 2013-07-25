@@ -26,13 +26,11 @@
 + (ILSideScrollViewItem *)item {
     ILSideScrollViewItem *newItem = [[ILSideScrollViewItem alloc] init];
     newItem.title = nil;
-    newItem.backgroundColor = kILSideScrollViewItemBkgColor;
-    newItem.defaultBackgroundImage = nil;
-    newItem.selectedBackgroundImage = nil;
+    newItem.backgroundImageURL = @"";
+    newItem.placeHolderImageURL = @"";
     newItem.target = nil;
     newItem.action = nil;
     newItem.defaultTitleColor = kILSideScrollViewItemDefaultTitleColor;
-    newItem.selectedTitleColor = kILSideScrollViewItemSelectedTitleColor;
     newItem.titleFont = kILSideScrollViewItemTitleFont;
     
     return newItem;

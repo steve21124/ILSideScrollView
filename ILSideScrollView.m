@@ -5,7 +5,7 @@
 //
 
 #import "ILSideScrollView.h"
-
+#import "NPRImageView.h"
 /* Default Settings */
 #define kILSideScrollViewBackgroundColor [UIColor whiteColor]
 #define kILSideScrollViewIndicatorStyle UIScrollViewIndicatorStyleDefault
@@ -71,43 +71,27 @@
 
     for (int i = 0; i < items.count; i++) {
         ILSideScrollViewItem *item = items[i];
+
+        NPRImageView *imageCell = [[NPRImageView alloc] initWithFrame:CGRectInset(CGRectMake(0, 0, 200, self.frame.size.height), 10, 10)];
         
-        /* Create each square button */
-        UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
-        btn.frame = CGRectMake(leftLength, kVerticalBuffer, width, width);
-        btn.layer.borderWidth = 1.0f;
-        btn.layer.borderColor = _borderColor.CGColor;
+        NSURL *imageLink = [NSURL URLWithString:item.backgroundImageURL];
 
-        /* Set the item's action */
-        btn.tag = i;
-        [btn addTarget:self
-                action:@selector(buttonTapped:)
-      forControlEvents:UIControlEventTouchUpInside];
-
-        /* Set the item's background properties */
-        [btn setBackgroundColor:item.backgroundColor];
-        [btn setBackgroundImage:item.defaultBackgroundImage
-                       forState:UIControlStateNormal];
-        [btn setBackgroundImage:item.selectedBackgroundImage
-                       forState:UIControlStateHighlighted];
-
-        /* Set the item's title properties */
-        [btn setTitle:item.title
-             forState:UIControlStateNormal];
-        [btn setTitleColor:item.defaultTitleColor
-                  forState:UIControlStateNormal];
-        [btn setTitleColor:item.selectedTitleColor
-                  forState:UIControlStateHighlighted];
-        btn.titleLabel.font = item.titleFont;
-
-        [self addSubview:btn];
+        UIImage *placeholderImage = [UIImage imageWithContentsOfFile:item.placeHolderImageURL];
+        [imageCell setImageWithContentsOfURL:imageLink placeholderImage:placeholderImage];
+        
+        UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, imageCell.frame.size.height - 25, imageCell.frame.size.width, 20)];
+        [titleLabel setFont:item.titleFont];
+        [titleLabel setTextColor:item.defaultTitleColor];
+        titleLabel.textAlignment = NSTextAlignmentCenter;
+        titleLabel.backgroundColor = [UIColor clearColor];
+        [self addSubview:imageCell];
 
         leftLength += width + kHorizontalBuffer;
     }
 
     self.contentSize = CGSizeMake(leftLength, self.frame.size.height);
 }
-
+/*
 - (void)buttonTapped:(id)sender {
     UIButton *btn = (UIButton *)sender;
     NSUInteger idx = btn.tag;
@@ -122,6 +106,7 @@
     
 #pragma clang diagnostic pop
 }
+*/
 
 /* Returns YES if array contains only ILSideScrollViewItem objects,
  * NO otherwise.

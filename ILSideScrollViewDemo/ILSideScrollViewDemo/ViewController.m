@@ -25,10 +25,10 @@
     /* Scroller2 has a large number of items, varying background color. Tapping
      * on items changes the navigation bar to that item's color.
      */
-    [self setupScroller2];
+   // [self setupScroller2];
 
     /* Scroller3 has a completely customized appearance, alert actions */
-    [self setupScroller3];
+   // [self setupScroller3];
 }
 
 #pragma mark - Setup Scrollers
@@ -94,12 +94,6 @@
             green = 1-blue;
         }
         
-        UIColor *color = [UIColor colorWithRed:red green:green blue:blue alpha:1.0];
-        item.backgroundColor = color;
-
-        /* Tapping on a square will set the navigation bar to that color */
-        [item setTarget:self action:@selector(changeNavBarColor:) withObject:color];
-        
         [items addObject:item];
     }
 
@@ -122,10 +116,8 @@
     for (int i = 'A'; i <= 'J'; i++) {
         ILSideScrollViewItem *item = [ILSideScrollViewItem item];
         item.title = [NSString stringWithFormat:@"%c", i];
-        item.backgroundColor = [UIColor colorWithPatternImage:
-                                [UIImage imageNamed:@"wood.png"]];
+
         item.defaultTitleColor = [UIColor brownColor];
-        item.selectedTitleColor = [UIColor redColor];
         item.titleFont = [UIFont fontWithName:@"MarkerFelt-Wide" size:60];
         [item setTarget:self action:@selector(showAlertForItem:) withObject:item];
         [items addObject:item];
