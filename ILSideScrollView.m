@@ -40,7 +40,7 @@
 - (void)setupDefaults {
     self.scrollsToTop = NO;
     leftLength = kHorizontalBuffer;
-
+    
     /* Default settings */
     [self setBackgroundColor:kILSideScrollViewBackgroundColor
               indicatorStyle:kILSideScrollViewIndicatorStyle
@@ -58,28 +58,27 @@
 
 #pragma mark - Data handling methods
 
-- (void)populateSideScrollViewWithItems:(NSArray *)items {
+- (void)populateSideScrollViewWithItems:(NSArray *)items cellHeight:(CGFloat)cellHeight{
     [self removeAllItems];
-
+    
     self.items = [items mutableCopy];
-    width = (self.frame.size.height * 0.666) - (2 * kVerticalBuffer);
-
+    width = (cellHeight * 0.666) - (2 * kVerticalBuffer);
+    
     /* Raise an exception if items contains foreign-typed objects */
     if (![self arrayContainsItemObjects:items]) {
         [NSException raise:@"ILSideScrollView array of wrong type" format:@"Array passed into populateSideScrollViewWithItems: contains objects that are not of type ILSideScrollViewItems."];
     }
-
+    
     for (int i = 0; i < items.count; i++) {
         ILSideScrollViewItem *item = items[i];
         
-        CGFloat cellHeight = width * 1.5;
         NPRImageView *imageCell = [[NPRImageView alloc] initWithFrame:CGRectMake(leftLength, kVerticalBuffer, width, cellHeight)];
         [imageCell setAutoresizingMask:UIViewAutoresizingFlexibleHeight|UIViewAutoresizingFlexibleWidth];
         [imageCell setBackgroundColor:[UIColor whiteColor]];
         [imageCell setContentMode:UIViewContentModeScaleAspectFill];
         
         NSURL *imageLink = [NSURL URLWithString:item.backgroundImageURL];
-
+        
         UIImage *placeholderImage = [UIImage imageWithContentsOfFile:item.placeHolderImageURL];
         [imageCell setImageWithContentsOfURL:imageLink placeholderImage:placeholderImage];
         
@@ -89,28 +88,28 @@
         titleLabel.textAlignment = NSTextAlignmentCenter;
         titleLabel.backgroundColor = [UIColor clearColor];
         [self addSubview:imageCell];
-
+        
         leftLength += width + kHorizontalBuffer;
     }
-
-    self.contentSize = CGSizeMake(leftLength, self.frame.size.height);
+    
+    self.contentSize = CGSizeMake(leftLength, cellHeight);
 }
 /*
-- (void)buttonTapped:(id)sender {
-    UIButton *btn = (UIButton *)sender;
-    NSUInteger idx = btn.tag;
-    ILSideScrollViewItem *item = self.items[idx];
-
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Warc-performSelector-leaks"
-    
-    if (item.target != nil && item.action != nil) {
-        [item.target performSelector:item.action withObject:item.object];
-    }
-    
-#pragma clang diagnostic pop
-}
-*/
+ - (void)buttonTapped:(id)sender {
+ UIButton *btn = (UIButton *)sender;
+ NSUInteger idx = btn.tag;
+ ILSideScrollViewItem *item = self.items[idx];
+ 
+ #pragma clang diagnostic push
+ #pragma clang diagnostic ignored "-Warc-performSelector-leaks"
+ 
+ if (item.target != nil && item.action != nil) {
+ [item.target performSelector:item.action withObject:item.object];
+ }
+ 
+ #pragma clang diagnostic pop
+ }
+ */
 
 /* Returns YES if array contains only ILSideScrollViewItem objects,
  * NO otherwise.
@@ -120,14 +119,14 @@
         if (![array[i] isMemberOfClass:[ILSideScrollViewItem class]])
             return NO;
     }
-
+    
     return YES;
 }
 
 - (void)removeAllItems {
     [self.items removeAllObjects];
     leftLength = kHorizontalBuffer;
-
+    
     for (UIView *view in self.subviews) {
         if ([view isKindOfClass:[UIButton class]]) {
             [view removeFromSuperview];

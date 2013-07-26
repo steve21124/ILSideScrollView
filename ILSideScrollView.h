@@ -56,7 +56,7 @@
  *
  * @exception Raises "ILSideScrollView array of wrong type" if the items array contains objects that are not of type ILSideScrollViewItem.
  */
-- (void)populateSideScrollViewWithItems:(NSArray *)items;
+- (void)populateSideScrollViewWithItems:(NSArray *)items cellHeight:(CGFloat)cellHeight;
 
 /**
  * Scroll to the leftmost edge of the receiver ILSideScrollView.

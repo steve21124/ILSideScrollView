@@ -69,7 +69,7 @@
                                               0,
                                               self.view.frame.size.width,
                                               200)];
-    [scroller1 populateSideScrollViewWithItems:items];
+    //[scroller1 populateSideScrollViewWithItems:items];
 
     [self.view addSubview:scroller1];
 }
@@ -109,7 +109,7 @@
     [scroller2 setBackgroundColor:[UIColor blackColor]
                    indicatorStyle:UIScrollViewIndicatorStyleWhite
                   itemBorderColor:[UIColor whiteColor]];
-    [scroller2 populateSideScrollViewWithItems:items];
+    //[scroller2 populateSideScrollViewWithItems:items];
     
     [self.view addSubview:scroller2];
 }
@@ -136,7 +136,7 @@
     [scroller3 setBackgroundColor:[UIColor brownColor]
                    indicatorStyle:UIScrollViewIndicatorStyleWhite
                   itemBorderColor:[UIColor blackColor]];
-    [scroller3 populateSideScrollViewWithItems:items];
+    //[scroller3 populateSideScrollViewWithItems:items];
 
     [self.view addSubview:scroller3];
 }
